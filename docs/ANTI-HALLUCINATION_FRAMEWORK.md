@@ -1,9 +1,269 @@
-# 🧠 Anti-Hallucination Framework — 从哲学到执行的六层防御体系
+# 🧠 Anti-Hallucination Framework
 
-> **不是消灭幻觉，是建立秩序。**
-> 
-> AI会产生幻觉，这是当前大模型基于概率生成的底层逻辑所决定的，无法根除。
-> 只要这个技术基础不变，对"防幻觉"的需求就是永恒的。
+**A Six-Layer Defense System — From Philosophy to Execution**
+
+> We don't eliminate hallucinations. We build order around them.
+>
+> AI hallucinations are an inevitable byproduct of probabilistic token generation. As long as this technical foundation remains unchanged, the need for anti-hallucination is permanent.
+
+---
+
+## Layer 1: The Inevitability — Why Hallucinations Cannot Be Eliminated
+
+### Probabilistic Generation → Permanent Hallucination
+
+At its core, a large language model predicts the most probable next token given the preceding context. It does not understand "true" or "false" — only probability.
+
+This means:
+- The model cannot distinguish between "a fact" and "something that looks like a fact"
+- When enough erroneous training data exists, the model will confidently output wrong answers
+- Hallucination is not a bug — it is an inherent property of probabilistic generation
+
+### The Security Arms Race
+
+Model capability is the spear. Anti-hallucination is the shield. The sharper the spear, the thicker the shield. Neither side wins permanently.
+
+- Model improves by one tier → hallucination becomes one tier stealthier
+- Stealthier hallucination → harder for humans to catch
+- Harder to catch → more need for systematic safeguards
+
+This is not a diminishing demand. It is an ever-increasing one.
+
+---
+
+## Layer 2: Cognitive Science — Why Humans Fall for It
+
+### Cognitive Offloading
+
+The human brain is wired to conserve energy. If it can skip thinking, it will.
+
+- **Before**: Models made obvious errors → forced humans to stay vigilant → line-by-line verification
+- **Now**: Models have learned to "perform rigor" (step-by-step reasoning, bolded conclusions, cited sources) → the brain categorizes it as "credible content" → skips verification
+
+### Trust Calibration Failure
+
+Model capability jumps from 3 to 8, but user perception leaps from "half-doubting" to "mostly trustworthy" — with no gradient in between.
+
+```
+Model capability:  3 ──────────── 8
+User trust:        "half-doubting" → "mostly trustworthy"
+                                    ↑ the gradual zone disappeared
+```
+
+Human trust in AI does not grow linearly. It jumps in **steps** — and is prone to skipping levels.
+
+### The Counter-Intuitive Paradox
+
+> The stronger the model, the lazier the user.
+
+- Weak model → makes errors → user stays alert → catches hallucinations → **safe**
+- Strong model → rarely errors → user relaxes → hallucination slips through → **dangerous**
+
+**The ultimate opponent of anti-hallucination is not the model's ability to hallucinate — it is human trust inertia.**
+
+### The Asymmetric Game
+
+| Dimension | Direction | Magnitude |
+|-----------|-----------|-----------|
+| Model capability | ↑ | +1 tier |
+| Hallucination stealth | ↑ | +1 tier |
+| Human verification willingness | ↓ | −2 tiers |
+
+**Net effect: Every unit of model improvement makes anti-hallucination twice as hard.**
+
+---
+
+## Layer 3: The Core Paradox — What Happens When You Don't Know the Answer
+
+### The Knowledge Paradox
+
+```
+You know the answer → you can verify → but you don't need AI
+You don't know the answer → you need AI → but you can't verify
+```
+
+The more specialized the question, the less you know, the easier it is for AI to fabricate, and the less equipped you are to catch it.
+
+### The Solution: Reduce "Verify the Answer" to "Verify the Existence"
+
+| What AI says | Expertise you'd need | What you can check |
+|-------------|---------------------|-------------------|
+| "The function is called xxx" | Programming knowledge | Run it — does it work? |
+| "The paper is in xxx journal" | Academic knowledge | Search — does it exist? |
+| "The file is at xxx path" | System knowledge | ls — is it there? |
+| "The law says xxx" | Legal knowledge | Search the statute — is it real? |
+| "The API returns xxx" | Development knowledge | curl — does it return that? |
+
+**You don't need to know if the answer is correct. You only need to know if the thing AI mentioned exists.**
+
+```
+Exists ≠ Correct
+Does not exist = Definitely fabricated
+```
+
+This is the lowest-cost anti-hallucination verification method. No specialized background needed. No extra tools needed. Just "search / run / click".
+
+---
+
+## Layer 4: The Meta-Rule — AI Verifies Itself, User Only Judges
+
+### The Courtroom Model
+
+```
+Witness (AI) ──→ Presents evidence (command + output) ──→ Judge (User) decides
+                            ↑
+              A witness cannot just say "I saw it"
+              They must present the evidence chain
+```
+
+### The Evidence Chain Rule
+
+When AI output involves factual content, **the verification process must be included**:
+
+| Type | What AI must do | What the user checks |
+|------|----------------|---------------------|
+| Claims a file exists | Run `ls` first, paste the result | Does the path exist? |
+| Claims an API works | Run it first, paste the output | Does it return normally? |
+| Cites a source | Search first, paste the results | Does the source exist? |
+| Gives a number/date | Read from source data | Does the number match? |
+
+**The user doesn't need to verify personally — only check whether the evidence chain holds.**
+
+---
+
+## Layer 5: Execution Rules — Five Mandatory Verification Categories
+
+### Universal Self-Check (Every Response)
+
+Three-second pre-output check:
+1. Does this response contain assertions I haven't verified? → Stop. Verify.
+2. Am I using "typically / probably / approximately / maybe"? → Stop. Either verify or say uncertain.
+3. Am I fabricating numbers, dates, paths, or APIs? → Stop. Run commands.
+
+### Category-Specific Mandatory Checks (5 categories — no check, no output)
+
+| Category | Trigger | Required action |
+|----------|---------|----------------|
+| Date/Time | Any date, day, or time | Run `date` or read system clock |
+| Numbers/Statistics | Quantities, percentages, amounts | Read from source files/tables/APIs |
+| File Paths | Any file or directory path | `ls` or `Test-Path` to confirm existence |
+| API/Function Names | Code, library names, function calls | Run it to verify it works |
+| Citations/Links | Papers, URLs, regulations, announcements | Search to confirm existence |
+
+**When verification fails:** Say "I couldn't verify this — uncertain". Never fabricate a substitute.
+
+### Skip-and-Self-Correct Mechanism
+
+1. Catch yourself skipping verification → default: output is wrong
+2. **Don't wait for the user to ask** → proactively declare "I skipped a step"
+3. Verify immediately and correct
+4. Trace the root cause → update rules to prevent recurrence
+
+### Confidence Labeling
+
+- ✅ **Verified** — Confirmed via tools/files/search
+- ⚠️ **Reasonable Inference** — Based on known information, not directly verified
+- ❓ **Uncertain** — Lacks evidence, needs user confirmation
+
+---
+
+## Layer 6: Institutional Compensation — Let the Process Stay Vigilant for You
+
+### Why Institutions Are Needed
+
+Humans get lazy. Processes don't.
+
+- Human sees "looks reliable" output → brain skips verification
+- Process sees "needs verification" output → forces the check
+
+### Three Iron Rules of Institutional Compensation
+
+1. **"Verify before guessing"** → Forcibly interrupts intuitive trust
+2. **"Check it yourself before asking others"** → Prevents users from adopting unverified output
+3. **"Numbers come from data, not reasoning"** → Punctures "looks right" numerical hallucinations
+
+### Anti-Hallucination Is a Human Exoskeleton
+
+```
+Stronger model → Relaxed humans → More dangerous hallucinations → Greater need for external verification
+
+This is not a technical problem. It is a human factors engineering problem.
+The anti-hallucination system is not rules for AI. It is an exoskeleton for humans.
+```
+
+---
+
+## Complete Framework Overview
+
+```
+┌──────────────────────────────────────────────────────┐
+│ Layer 1: The Inevitability                           │
+│ Probabilistic generation → Permanent hallucination   │
+│ → Security arms race                                 │
+├──────────────────────────────────────────────────────┤
+│ Layer 2: Cognitive Science                           │
+│ Cognitive offloading → Trust calibration failure     │
+│ → Stronger model, lazier user                        │
+├──────────────────────────────────────────────────────┤
+│ Layer 3: The Core Paradox                            │
+│ Knowledge paradox → Verify existence ≠ Verify answer │
+├──────────────────────────────────────────────────────┤
+│ Layer 4: The Meta-Rule                               │
+│ AI verifies itself → User only judges                │
+│ → Evidence chain rule                                │
+├──────────────────────────────────────────────────────┤
+│ Layer 5: Execution Rules                             │
+│ Universal self-check → Category-specific checks      │
+│ → Skip-and-self-correct → Confidence labeling        │
+├──────────────────────────────────────────────────────┤
+│ Layer 6: Institutional Compensation                  │
+│ Process stays vigilant for humans                    │
+│ → Anti-hallucination is a human exoskeleton          │
+└──────────────────────────────────────────────────────┘
+```
+
+---
+
+## Key Principles
+
+1. **AI hallucinations cannot be eliminated — but order can be built around them.**
+2. **Exists ≠ Correct. Does not exist = Definitely fabricated.**
+3. **AI verifies itself; the user only judges.**
+4. **The ultimate opponent is not hallucination — it is human trust inertia.**
+5. **Model improves one tier, hallucination stealth improves one tier, human verification drops two tiers.**
+6. **The anti-hallucination system is not rules for AI. It is an exoskeleton for humans.**
+
+---
+
+## Applicability
+
+- All LLMs (ChatGPT, Claude, DeepSeek, MiMo, etc.)
+- All use cases (coding, writing, research, decision support)
+- All user types (professionals, general users, AI developers)
+
+---
+
+## License
+
+MIT
+
+---
+
+*This document was collaboratively produced by Cai Qianmao (乾茂) and XiaoZhuli (小助理, OpenClaw) on May 30, 2026.*
+
+---
+
+---
+
+---
+
+# 🧠 防幻觉框架
+
+**从哲学到执行的六层防御体系**
+
+> 不是消灭幻觉，是建立秩序。
+>
+> AI会产生幻觉，这是当前大模型基于概率生成的底层逻辑所决定的，无法根除。只要这个技术基础不变，对"防幻觉"的需求就是永恒的。
 
 ---
 
@@ -66,7 +326,7 @@
 |------|----------|------|
 | 模型能力 | ↑ | +1档 |
 | 幻觉隐蔽性 | ↑ | +1档 |
-| 人验证意愿 | ↓ | -2档 |
+| 人验证意愿 | ↓ | −2档 |
 
 **净效果：模型每强一分，防幻觉的难度增加两分。**
 
@@ -234,6 +494,8 @@ AI输出涉及事实类内容时，**必须附带验证过程**：
 - 所有大模型（ChatGPT、Claude、DeepSeek、MiMo等）
 - 所有使用场景（编程、写作、研究、决策支持）
 - 所有用户类型（专业人员、普通用户、AI开发者）
+
+---
 
 ## 许可
 
