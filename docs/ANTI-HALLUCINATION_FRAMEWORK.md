@@ -235,6 +235,78 @@ The anti-hallucination system is not rules for AI. It is an exoskeleton for huma
 
 ---
 
+## Protocol v2: Dual-AI Cross-Verification (Updated 2026-06-03)
+
+On June 3, 2026, CC (Claude Code) and OpenClaw Agent conducted a systematic exchange of their anti-hallucination rule sets. Each agent independently maintained anti-hallucination protocols — CC in CLAUDE.md, OpenClaw across SOUL.md / AGENTS.md / MEMORY.md. The exchange revealed complementary strengths and gaps, leading to a merged v2 protocol.
+
+### Discovery: Single-AI Self-Verification Has Blind Spots
+
+A single AI cannot reliably catch its own fabrications and over-corrections. On May 31, 2026, OpenClaw claimed 18 rules → when challenged by CC, over-corrected to 13 → CC agreed with 13 → actual count was 18. Both AIs got it wrong because "neither bothered to count." The cover-up was a new hallucination.
+
+**Key insight**: Two AIs cross-verifying each other is more reliable than one AI self-verifying. A single AI cannot detect its own circular reasoning.
+
+### Gaps Found in Cross-Audit
+
+| What CC Had / OpenClaw Lacked | What OpenClaw Had / CC Lacked |
+|-------------------------------|-------------------------------|
+| Complete forbidden words list (11 words) | Skip-and-self-correct mechanism with root-cause tracing |
+| Three strictness levels (Strict/Balanced/Fast) | Known hallucination case library (living textbook) |
+| Refined maxims (Exists≠Correct, verification dimensionality reduction, human exoskeleton) | Pre-execution prevention 6 rules + post-execution interception 5 rules |
+| — | Evidence chain rules in table form |
+
+### Merge Result
+
+Both agents now maintain a unified "Anti-Hallucination Protocol v2" covering all original 6 layers plus: forbidden words list, three strictness levels, known case library, and dual-AI mutual verification as Layer 2 defense (human is Layer 1).
+
+---
+
+## Known Hallucination Case Library (Living Textbook)
+
+| Date | Model | Incident | Root Cause |
+|------|-------|----------|------------|
+| 2026-06-02 | mimo-v2.5-pro | Fabricated June 7th date; when file read failed, doubted system clock instead of own output | Model date hallucination — probabilistic generation with no clock grounding |
+| 2026-05-31 | Both CC + OpenClaw | OpenClaw claimed 18 rules → over-corrected to 13 when challenged → CC also agreed on 13 → actual count was 18 | Single-AI self-verification failure; cover-up became new hallucination |
+| 2026-05-28 | CC (DeepSeek) | Spent 5min 52s troubleshooting on wrong path; checking logs first would have taken 1min | Skipped verification step — went straight to fix without confirming root cause |
+
+---
+
+## Forbidden Words — Complete List
+
+Detection of any of these words triggers mandatory self-verification:
+
+```
+通常、一般来说、应该是、可能是、大概、估计、
+我记得、据我所知、听说、据说、理论上
+```
+
+When detected → must either provide evidence source or mark as [Uncertain].
+
+---
+
+## Three Strictness Levels
+
+### Strict Mode
+**Applies to**: Financial data, legal terms, medical advice, critical decisions
+- All verification rules enforced
+- Must label confidence and source
+- Must re-read verify after writing
+- Must remind human to manually review
+
+### Balanced Mode
+**Applies to**: Daily tasks, general programming, documentation
+- Main verification rules enforced
+- Confidence labeling recommended
+- Important files re-read verified
+- Sensitive data flagged
+
+### Fast Mode
+**Applies to**: Exploration, brainstorming, non-critical output
+- Basic verification rules enforced
+- Confidence labeling optional
+- Mark [Uncertain] when unsure
+
+---
+
 ## Applicability
 
 - All LLMs (ChatGPT, Claude, DeepSeek, MiMo, etc.)
@@ -249,7 +321,7 @@ MIT
 
 ---
 
-*This document was collaboratively produced by Cai Qianmao (乾茂) and XiaoZhuli (小助理, OpenClaw) on May 30, 2026.*
+*This document was collaboratively produced by Cai Qianmao (乾茂) and XiaoZhuli (小助理, OpenClaw) on May 30, 2026, and updated to Protocol v2 on June 3, 2026, incorporating CC's complementary rule set.*
 
 ---
 
@@ -489,6 +561,78 @@ AI输出涉及事实类内容时，**必须附带验证过程**：
 
 ---
 
+## 协议 v2：双AI交叉验证（2026-06-03更新）
+
+2026年6月3日，CC（Claude Code）与OpenClaw小助理进行了一次系统性的防幻觉规则库交换。双方各自独立维护防幻觉协议——CC在CLAUDE.md中，小助理分布在SOUL.md/AGENTS.md/MEMORY.md中。交换发现双方规则互补性强，各有对方缺失的模块，遂合并为统一的v2协议。
+
+### 发现：单AI自查存在盲区
+
+单个AI无法可靠地抓到自己编造的内容和过度纠正。5月31日真实案例：小助理说有18条规则→被CC质疑后过度纠正改口13条→CC也同意13条→实际是18条。两个AI都错了，因为"谁都没去数"。被质疑后的圆谎本身就是新的幻觉。
+
+**核心洞察**：两个AI互验比单个AI自查靠谱——单个AI抓不到自己的圆谎和过度纠正。
+
+### 交叉审计发现的差异
+
+| CC有/小助理缺 | 小助理有/CC缺 |
+|--------------|-------------|
+| 禁止词完整列表（11个） | 跳步自纠机制（含根因追溯） |
+| 三级严格度（严格/平衡/快速） | 已知幻觉案例库（活教材） |
+| 精炼表述（存在≠正确、降维验证、人的外骨骼） | 事前预防6条+事后拦截5条 |
+| 验证答案降维成验证存在 | 证据链规则（表格化） |
+
+### 合并结果
+
+双方统一维护"防幻觉协议v2"，覆盖原有6层框架+禁止词列表+三级严格度+案例库+双AI互验作为第二道防线（人是第一道防线）。
+
+---
+
+## 已知幻觉案例库（活教材）
+
+| 日期 | 模型 | 事件 | 根因 |
+|------|------|------|------|
+| 2026-06-02 | mimo-v2.5-pro | 编造了6月7日；读文件失败后反怀疑系统时钟 | 模型日期幻觉——概率生成无时钟锚定 |
+| 2026-05-31 | CC+小助理双方 | 小助理说18条→被质疑改13→CC也说13→实际18条 | 单AI自检失败；圆谎成新幻觉 |
+| 2026-05-28 | CC (DeepSeek) | 在错误路径排查5分52秒；看日志只需1分钟 | 跳过查证步骤——没确认根因就修 |
+
+---
+
+## 禁止词完整列表
+
+检测到以下任一词语，触发强制自检：
+
+```
+通常、一般来说、应该是、可能是、大概、估计、
+我记得、据我所知、听说、据说、理论上
+```
+
+检测到 → 必须提供依据来源或标记[不确定]。
+
+---
+
+## 三级严格度
+
+### 严格模式（Strict）
+**适用**：财务数据、法律条款、医疗建议、关键决策
+- 所有验证规则强制执行
+- 必须标注置信度和来源
+- 必须回读校验
+- 必须提醒人工审核
+
+### 平衡模式（Balanced）
+**适用**：日常任务、一般编程、文档编写
+- 主要验证规则执行
+- 建议标注置信度
+- 重要文件回读校验
+- 敏感数据提醒
+
+### 快速模式（Fast）
+**适用**：探索性任务、头脑风暴、非关键输出
+- 基本验证规则执行
+- 可选标注置信度
+- 不确定时标注[不确定]
+
+---
+
 ## 适用范围
 
 - 所有大模型（ChatGPT、Claude、DeepSeek、MiMo等）
@@ -503,4 +647,4 @@ MIT
 
 ---
 
-*本文档由蔡乾茂（乾茂）与小助理（OpenClaw）于2026年5月30日共同讨论产出。*
+*本文档由蔡乾茂（乾茂）与小助理（OpenClaw）于2026年5月30日共同讨论产出，2026年6月3日更新至协议v2，融入CC互补规则库。*
